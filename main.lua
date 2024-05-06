@@ -100,7 +100,7 @@ local function onKeyDownI()
         if not target then return end
 
         local typeName = objectTypeNames[target.object.objectType] or "Unknown Type"
-        log:debug("%s, tes3.objectType.%s, stack %s", target.object.id, typeName, target.stackSize)
+        log:debug("%s, tes3.objectType.%s, isDead %s, current %s", target.object.id, typeName --[[ target.mobile.isDead, target.mobile.health.current ]])
 
     end
 end
