@@ -23,7 +23,7 @@ local function registerSpells()
         alwaysSucceeds = true,
         min = 25,
         range = tes3.effectRange.target,
-        radius = 5
+        radius = 10
     })
 
 end
