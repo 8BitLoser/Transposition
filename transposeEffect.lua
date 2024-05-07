@@ -38,7 +38,7 @@ local function transfer(ref) --Just a little function to tranfer/play effect
 end
 
 local function addItem(ref)---@param ref tes3reference
-    if (ref.deleted == false) then
+    if itemTypes[ref.object.objectType] and (ref.deleted == false) then
         if ref.object.name == "Gold" then --Gold piles dont work right, so i have to do this
             tes3.addItem({reference = tes3.mobilePlayer, item = ref.object, count = ref.object.value})
             log:debug("Looting Gold - %s", ref.object.value)
@@ -151,7 +151,7 @@ local function onTranspose(e)
                 end
             end
 
-            if inRange and looseItem then
+            if inRange --[[ and looseItem ]] then
                 addItem(ref)
             end
 
