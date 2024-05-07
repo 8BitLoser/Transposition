@@ -15,7 +15,6 @@ local function initialized()
 end
 event.register(tes3.event.initialized, initialized)
 
-
 local function registerSpells()
     spellMaker.create({
         id = "bsTranspose",
@@ -24,21 +23,17 @@ local function registerSpells()
         alwaysSucceeds = true,
         min = 25,
         range = tes3.effectRange.target,
-        radius = 15
+        radius = 5
     })
 
 end
 event.register("loaded", registerSpells, {priority = 1})
-
 
 local function addSpells()
    tes3.addSpell({ reference = tes3.mobilePlayer, spell = "bsTranspose" })
    tes3.mobilePlayer:equipMagic { source = "bsTranspose" }
 end
 event.register(tes3.event.loaded, addSpells)
-
-
-
 
 local objectTypeNames = {
     [1230259009] = "activator",
@@ -100,7 +95,9 @@ local function onKeyDownI()
         if not target then return end
 
         local typeName = objectTypeNames[target.object.objectType] or "Unknown Type"
-        log:debug("%s, tes3.objectType.%s, isDead %s, current %s", target.object.id, typeName --[[ target.mobile.isDead, target.mobile.health.current ]])
+        log:debug("%s, tes3.objectType.%s", target.object.id, typeName)
+        -- log:debug("%s trap %s, locked %s, trapNode %s", target.object.name, target.lockNode.trap, target.lockNode.locked, target.lockNode)
+        -- log:debug("objectFaction %s, playerFaction %s",target.object.faction[1].name, tes3.player.object.faction)
 
     end
 end
